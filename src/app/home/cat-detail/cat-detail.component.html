@@ -1,0 +1,12 @@
+<app-header [title]="cat.name" [backButton]="true" (backButtonAction)="closeModal()"></app-header>
+<ion-content fullscreen="true">
+  <div class="img-container">
+    <ion-img [src]="`${imageUrl}/${cat.reference_image_id}.jpg`" [alt]="'Image Not Found'"></ion-img>
+  </div>
+  <div class="cat-info">
+    <ion-text class="description"><p>{{ cat.description }}</p></ion-text>
+    <ion-text><p><strong>Country:</strong> {{ cat.origin }}</p></ion-text>
+    <ion-text><p><strong>Intelligence:</strong> {{ cat.intelligence }}</p></ion-text>
+    <ion-text><p><strong>Adaptability:</strong> {{ cat.adaptability }}</p></ion-text>
+  </div>
+</ion-content>

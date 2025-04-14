@@ -1,0 +1,12 @@
+<ion-header mode="ios" [translucent]="true">
+  <ion-toolbar mode="ios">
+    @if (backButton) {
+      <ion-button mode="ios" fill="clear" (click)="onBackButton()">
+        <ion-icon slot="icon-only" name="chevron-back" color="medium"></ion-icon>
+      </ion-button>
+    }
+    <ion-title mode="ios">
+        {{ title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

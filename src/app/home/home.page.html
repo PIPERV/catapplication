@@ -1,20 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [title]="'Catbreeds'"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-searchbar mode="ios" placeholder="Search a Cat" (ionInput)="searchCat($event)"></ion-searchbar>
+  @for (cat of cats; track $index) {
+    <ion-card mode="ios">
+      <ion-card-title mode="ios">
+        <div class="header-content">
+          <div>
+            <strong>
+              {{ cat.name }}
+            </strong>
+          </div>
+          <div>
+            <ion-button mode="ios" fill="clear" color="medium" (click)="openDetails(cat)">
+              Más...
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-title>
+      <ion-card-content mode="ios">
+        <div>
+          <ion-img [src]="`${imageUrl}/${cat.reference_image_id}.jpg`" [alt]="'Image Not Found'"></ion-img>
+        </div>
+        <div class="footer-content">
+            <div>
+              <ion-text><strong>Country: {{ cat.origin }}</strong></ion-text>
+            </div>
+            <div>
+              <ion-text><strong>Intelligence: {{ cat.intelligence }}</strong></ion-text>
+            </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  }
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-toast mode="ios"
+    [isOpen]="isToastOpen"
+    message="Error while loading"
+    [duration]="5000"
+    (didDismiss)="showError(false)"
+  ></ion-toast>
 </ion-content>
